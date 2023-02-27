@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require('lodash');
+const path = require('path');
 const app = express();
 
 mongoose.set('strictQuery', true);
