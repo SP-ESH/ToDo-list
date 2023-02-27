@@ -4,17 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require('lodash');
-const path = require('path');
+const ejs = require('ejs');
 const app = express();
 
 mongoose.set('strictQuery', true);
-app.set('views', path.join(__dirname, 'views'));
-
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', ejs);
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static("public"));
 
 
 mongoose.connect('mongodb+srv://SP-ESH:good123@cluster0.83qzjkz.mongodb.net/todolistDB', {useNewUrlParser: true});
