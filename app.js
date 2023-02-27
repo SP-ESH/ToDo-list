@@ -7,10 +7,13 @@ const _ = require('lodash');
 const app = express();
 
 mongoose.set('strictQuery', true);
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 mongoose.connect('mongodb+srv://SP-ESH:good123@cluster0.83qzjkz.mongodb.net/todolistDB', {useNewUrlParser: true});
